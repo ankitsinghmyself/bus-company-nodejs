@@ -17,7 +17,8 @@ This is a Node.js-based ticketing system for a bus company. It allows users to c
 
 ### Postman
 
-Postman can be used to test the endpoints. The Postman collection can be found at https://api.postman.com/collections/2693321-c73d8e48-747e-4c13-b9c9-161f6756494b?access_key=PMAT-01GYFE3E78T7A7WFM73XFS0ZC6
+Postman can be used to test the endpoints. The Postman collection can be imported from the following link:
+https://api.postman.com/collections/2693321-c73d8e48-747e-4c13-b9c9-161f6756494b?access_key=PMAT-01GYFE3E78T7A7WFM73XFS0ZC6
 
 ## Endpoints
 
