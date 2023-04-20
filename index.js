@@ -5,12 +5,12 @@ const { ObjectId } = require('mongodb');
 
 const app = express();
 const eventEmitter = require('./notification');
-
-const mongodb_username = 'ankitsinghmyself';
-const mongodb_password = 'Mo%40maa622maa';
+// mongodb atlas username and password are temporary for this project
+const mongodb_username = 'ankitsinghmyself'; // Replace <username> with your username
+const mongodb_password = 'Mo%40maa622maa'; // Replace <password> with your password
 const mongodb_hostname =
   process.env.MONGODB_HOSTNAME || 'cluster0.fpm5lhj.mongodb.net';
-const mongodb_database = process.env.MONGODB_DATABASE || 'test';
+const mongodb_database = process.env.MONGODB_DATABASE || 'bus';
 const uri = `mongodb+srv://${mongodb_username}:${mongodb_password}@${mongodb_hostname}/${mongodb_database}`;
 
 const client = new MongoClient(uri, {
