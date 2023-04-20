@@ -22,8 +22,6 @@ Create a new ticket. Requires a `title` and `description` properties in the requ
 
       "title": "Trip to New York",
       "description": "I would like to travel to New York on June 15th.",
-      "user_id": "60637c8824e4e36a3327c4d8",
-      "status": "open"
 
 ### `GET /api/ticket/:id/details`
 
@@ -35,11 +33,36 @@ Update the status of a ticket by ID. Requires the ID of the ticket to be provide
 
       "status": "closed"
 
+### `GET /api/tickets/open`
+
+Get all open tickets.
+
+### `GET /api/tickets/closed`
+
+Get all closed tickets.
+
+### `PUT /api/ticket/:id/user`
+
+add user details to a ticket by ID. Requires the ID of the ticket to be provided in the URL parameter, and a `user` property in the request body.
+
+      "user": {
+        "name": "John Doe",
+        "email": "example@gmail.com",
+      }
+
+### `GET /api/ticket/:id`
+
+Get the details of a ticket by ID. Requires the ID of the ticket to be provided in the URL parameter.
+
+### `GET /admin/reset`
+
+Reset the server and make all tickets open.
+
 ## Event Listener
 
 The server emits a `ticket-updated` event when a ticket's status is updated. To listen for this event, use the following code:
 
-      const eventEmitter = require('./eventEmitter');
+      const eventEmitter = require('./notification');
       eventEmitter.on('ticket-updated', (ticket) => {
       console.log(Ticket ${ticket._id} updated: ${ticket.status});
       });
