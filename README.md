@@ -24,10 +24,13 @@ https://api.postman.com/collections/2693321-c73d8e48-747e-4c13-b9c9-161f6756494b
 
 ### `POST /api/ticket`
 
-Create a new ticket. Requires a `title` and `description` properties in the request body.
+To create a new ticket, a request body with `name`, `seat`, and `status` properties is required. The status property must be either open or closed, while the seat property must be a number between 1 and 40. The name property must be a string.
 
-      "title": "Trip to New York",
-      "description": "I would like to travel to New York on June 15th.",
+Once a ticket is created, its `status` is set to open by default. If a seat is already booked by another user and its status is still `open`, the API will not allow the creation of a new ticket for the same seat number. However, if a ticket for a seat is already `closed`, the API will allow the creation of a new ticket for that `seat` number.
+
+      "name": "Ticket 1",
+      "seat": "1",
+      "status": "open",
 
 ### `GET /api/ticket/:id/details`
 
@@ -74,3 +77,7 @@ The server emits a `ticket-updated` event when a ticket's status is updated. To 
       });
 
 Replace `console.log` with your own code to handle the event.
+
+## License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.

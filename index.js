@@ -156,13 +156,36 @@ app.post('/admin/reset', async (req, res) => {
 // API to create a new ticket (initially open)
 app.post('/api/ticket', async (req, res) => {
   try {
-    const { title, description } = req.body;
+    const { name, seat } = req.body;
+
+    // Check if seat is already booked
+    const existingTicket = await db
+      .collection('tickets')
+      .findOne({ seat: seat, status: 'open' });
+    if (existingTicket) {
+      return res.status(400).json({ error: 'Seat is already booked.' });
+    }
+
+    // Check if seat number is valid
+    if (seat < 1 || seat > 40) {
+      return res
+        .status(400)
+        .json({
+          error: 'Invalid seat number. Seat number should be between 1 and 40.',
+        });
+    }
+
     const result = await db.collection('tickets').insertOne({
-      title,
-      description,
+      name,
+      seat,
       status: 'open',
     });
-    res.json(result);
+    res.json({
+      id: result.insertedId,
+      name,
+      seat,
+      status: 'open',
+    });
   } catch (err) {
     console.log(err);
     res.status(500).json({ error: 'An internal server error occurred' });
