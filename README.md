@@ -13,6 +13,11 @@ This is a Node.js-based ticketing system for a bus company. It allows users to c
 1. Clone the repository and navigate to the project directory.
 2. Run `npm install` to install the dependencies.
 3. Run `npm start` or `npm run dev` to start the server.
+4. The server will be running on `http://localhost:3000`.
+
+### Postman
+
+Postman can be used to test the endpoints. The Postman collection can be found at https://api.postman.com/collections/2693321-c73d8e48-747e-4c13-b9c9-161f6756494b?access_key=PMAT-01GYFE3E78T7A7WFM73XFS0ZC6
 
 ## Endpoints
 
